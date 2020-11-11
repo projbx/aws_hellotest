@@ -23,8 +23,7 @@ This will ensure that each created (or recreated after some troubles) EC2 instan
 
 # Usage
 
-1. Download source folder
-1. Go to downloaded folder
+1. Download files
 1. Configure AWS credentials and other variables in config.json
 1. Run: chmod +x runme.sh
 1. Execute: ./runme.sh
