@@ -1,0 +1,40 @@
+{
+  "variables": {
+    "aws_access_key": "",
+    "aws_secret_key": "",
+    "aws_region": ""
+  },
+  "builders": [
+    {
+      "type": "amazon-ebs",
+      "access_key": "{{user `aws_access_key`}}",
+      "secret_key": "{{user `aws_secret_key`}}",
+      "region": "{{user `aws_region`}}",
+      "source_ami": "ami-0dd9f0e7df0f0a138",
+      "instance_type": "t2.micro",
+      "ssh_username": "ubuntu",
+      "ami_name": "ubuntu_test_QAAWUNJKSDQK"
+    }
+  ],
+  "provisioners" : [{
+    "type": "shell",
+    "inline": ["sleep 10",
+      "sudo snap install docker",
+      "cat <<EOF > ~/rc.local",
+      "#!/bin/sh -e",
+      "#",
+      "# rc.local",
+      "#",
+      "sleep 10",
+      "sudo docker run -d -p 80:8080 nginxdemos/nginx-hello",
+      "EOF",
+      "sudo mv ~/rc.local /etc/rc.local",
+      "sudo chmod +x /etc/rc.local",
+      "sudo systemctl enable rc-local"]
+  }],
+  "post-processors": [{
+      "type": "manifest",
+      "output": "manifest.json",
+      "strip_path": true
+    }]
+}

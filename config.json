@@ -1,0 +1,6 @@
+{
+  "aws_access_key": "AKH7OAS6GBYS_example",
+  "aws_secret_key": "qb9DTGTkUBBgXdunAtkgDfds+E1_example",
+  "aws_region": "us-east-2",
+  "ec2_access_public_key": "ssh-rsa AAAAB3N_EXAMPLE_3vxLP/DM8dF...0OMrteT/GQ== rsa-key-20201109"
+}
